@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Resume For Internship</title>
+  <link rel="stylesheet" href="./source/styles.css" />
+</head>
+<body data-theme="dopamine">
+  <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <header class="brand">
+        <div class="brand-mark">SR</div>
+        <div>
+          <h1>Smart Resume</h1>
+          <p>For Internship</p>
+        </div>
+      </header>
+
+      <div class="nav-layout">
+        <div class="sidebar-mode-toggle">
+          <span>Preview</span>
+          <label class="mode-switch">
+            <input id="sidebarEditModeToggle" type="checkbox" />
+            <span>Edit</span>
+          </label>
+        </div>
+        <nav class="nav-stack" aria-label="Primary">
+          <button class="nav-item active" data-view="home" type="button">
+            <span class="icon icon-svg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M6.35 11.15L12 6.5L17.65 11.15" />
+                <path d="M7.65 10.45V17.55H10.55V13.9H13.45V17.55H16.35V10.45" />
+              </svg>
+            </span>
+            Home
+          </button>
+          <button class="nav-item" data-view="generator" type="button">
+            <span class="icon icon-svg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M17.6 19.25H11.4C8.05 19.25 5.4 16.7 5.4 13.15V10.6C5.4 7.1 8.05 4.75 11.35 4.75H13.2C16.55 4.75 18.85 7.15 18.85 10.35V12.1" />
+                <path d="M18.85 12.1L20.55 14.7C20.9 15.25 20.58 15.95 19.95 16.02L18.35 16.18V18.2C18.35 18.78 18.18 19.25 17.6 19.25Z" />
+                <path d="M9.05 11.35C8.35 10.95 8.2 10.02 8.72 9.42C9.12 8.95 9.78 8.8 10.32 9.05C10.62 8.3 11.42 7.88 12.2 8.08C12.8 8.23 13.25 8.7 13.42 9.28C14.12 9.02 14.92 9.32 15.28 9.98C15.72 10.78 15.3 11.78 14.45 12.02" />
+                <path d="M9.05 11.35C8.75 12.1 9.15 12.92 9.92 13.12C10.4 13.25 10.88 13.12 11.25 12.85C11.6 13.45 12.35 13.72 13.02 13.48C13.55 13.3 13.92 12.85 14.02 12.32C14.18 12.22 14.32 12.12 14.45 12.02" />
+                <path d="M8.95 15.55H14.25" />
+              </svg>
+            </span>
+            Resume Generator
+          </button>
+          <button class="nav-item" data-view="master" type="button">
+            <span class="icon icon-svg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="4.25" y="13.25" width="3.5" height="6.5" rx="0.8" />
+                <rect x="10.25" y="10.25" width="3.5" height="9.5" rx="0.8" />
+                <rect x="16.25" y="6.25" width="3.5" height="13.5" rx="0.8" />
+                <path d="M4.5 10.5L9 8.2L13.2 9.4L18.8 3.9" />
+                <path d="M16.2 3.8H18.9V6.5" />
+              </svg>
+            </span>
+            Master Data
+          </button>
+          <button class="nav-item" data-view="ai" type="button">
+            <span class="icon icon-svg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M8.45 7.25H15.55C17.1 7.25 18.25 8.4 18.25 9.95V14.05C18.25 15.6 17.1 16.75 15.55 16.75H8.45C6.9 16.75 5.75 15.6 5.75 14.05V9.95C5.75 8.4 6.9 7.25 8.45 7.25Z" />
+                <path d="M12 7.25V5.25" />
+                <path d="M9.55 11.1H9.6" />
+                <path d="M14.4 11.1H14.45" />
+                <path d="M9.95 13.8C10.52 14.25 11.18 14.5 12 14.5C12.82 14.5 13.48 14.25 14.05 13.8" />
+                <path d="M4.75 11.25H5.75" />
+                <path d="M18.25 11.25H19.25" />
+              </svg>
+            </span>
+            AI Lab
+          </button>
+          <button class="nav-item" data-view="settings" type="button">
+            <span class="icon icon-svg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 9.25A2.75 2.75 0 1 0 12 14.75A2.75 2.75 0 0 0 12 9.25Z" />
+                <path d="M17.45 13.25C17.55 12.85 17.6 12.43 17.6 12C17.6 11.57 17.55 11.15 17.45 10.75L18.95 9.55L17.55 7.15L15.78 7.85C15.15 7.32 14.43 6.9 13.62 6.68L13.35 4.75H10.65L10.38 6.68C9.57 6.9 8.85 7.32 8.22 7.85L6.45 7.15L5.05 9.55L6.55 10.75C6.45 11.15 6.4 11.57 6.4 12C6.4 12.43 6.45 12.85 6.55 13.25L5.05 14.45L6.45 16.85L8.22 16.15C8.85 16.68 9.57 17.1 10.38 17.32L10.65 19.25H13.35L13.62 17.32C14.43 17.1 15.15 16.68 15.78 16.15L17.55 16.85L18.95 14.45L17.45 13.25Z" />
+              </svg>
+            </span>
+            Settings
+          </button>
+        </nav>
+
+        <section class="sidebar-history" aria-label="历史版本">
+          <div class="sidebar-history-head">
+            <div>
+              <span>历史版本</span>
+              <small>最近投递</small>
+            </div>
+            <button class="history-new-button" id="newVersionButton" type="button" aria-label="新建版本">+</button>
+          </div>
+          <div id="versionList" class="version-list sidebar-version-list"></div>
+          <button class="history-clear-button" id="clearVersionsButton" type="button">清空历史</button>
+        </section>
+
+        <div class="sidebar-bottom">
+          <section class="sidebar-note">
+            <h2>Hero Build</h2>
+            <p>Home 是简历的生活化拓展，Generator 是投递工坊，Master Data 是事实仓库。</p>
+          </section>
+          <button class="account-entry" id="accountEntryButton" type="button">
+            <span class="account-avatar" id="sidebarAccountAvatar">TK</span>
+            <span>
+              <strong id="sidebarAccountName">未登录</strong>
+              <small>Account</small>
+            </span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <section class="view active" id="view-home">
+        <div class="top-hud">
+          <article class="top-hud-item">
+            <span class="glass-icon">◷</span>
+            <div>
+              <small>时间</small>
+              <strong id="clockTime">--:--:--</strong>
+            </div>
+          </article>
+          <article class="top-hud-item">
+            <span class="glass-icon">◉</span>
+            <div>
+              <small>日期</small>
+              <strong id="clockDate">--/--</strong>
+            </div>
+          </article>
+          <article class="top-hud-item">
+            <span class="glass-icon">☁</span>
+            <div>
+              <small>天气</small>
+              <strong id="weatherStatus">灵感晴 · 24°C</strong>
+            </div>
+          </article>
+          <article class="top-hud-item">
+            <span class="glass-icon">◎</span>
+            <div>
+              <small>访客记录</small>
+              <strong id="visitorCount">0</strong>
+            </div>
+          </article>
+        </div>
+
+        <div class="dashboard-scale-shell" id="dashboardScaleShell">
+        <div class="hero-board hero-rpg" id="homeDashboard">
+          <section class="avatar-stage hero-card">
+            <div class="orbit-stack">
+              <button class="orbit-card orbit-card-1 active" data-orbit="skills" type="button">
+                <span class="glass-icon">✺</span>
+                <strong>技能槽</strong>
+                <small>React / TS / 工程化</small>
+              </button>
+              <button class="orbit-card orbit-card-2" data-orbit="persona" type="button">
+                <span class="glass-icon">◇</span>
+                <strong>人格</strong>
+                <small>问题拆解型</small>
+              </button>
+              <button class="orbit-card orbit-card-3" data-orbit="badges" type="button">
+                <span class="glass-icon">★</span>
+                <strong>徽章</strong>
+                <small>项目闭环</small>
+              </button>
+              <button class="orbit-card orbit-card-4" data-orbit="life" type="button">
+                <span class="glass-icon">☼</span>
+                <strong>生活</strong>
+                <small>跑步 / 阅读 / Demo</small>
+              </button>
+            </div>
+            <div class="avatar-left-panel">
+              <div class="avatar-card">
+                <div class="depth-rings" aria-hidden="true">
+                  <span class="depth-ring depth-ring-1"></span>
+                  <span class="depth-ring depth-ring-2"></span>
+                  <span class="depth-ring depth-ring-3"></span>
+                </div>
+                <div class="float-labels" aria-hidden="true">
+                  <span class="float-label float-label-1">Project Demo</span>
+                  <span class="float-label float-label-2">Git Commit</span>
+                  <span class="float-label float-label-3">UI Motion</span>
+                  <span class="float-label float-label-4">LLM Notes</span>
+                </div>
+                <div class="three-stage" id="threeStage">
+                  <div class="three-fallback-note" id="threeFallbackNote" aria-hidden="true"></div>
+                </div>
+                <div class="avatar-halo"></div>
+                <div class="avatar-figure" aria-label="cartoon avatar">
+                  <div class="avatar-head">
+                    <div class="avatar-hair"></div>
+                    <div class="avatar-face">
+                      <span class="eye left"></span>
+                      <span class="eye right"></span>
+                      <span class="smile"></span>
+                    </div>
+                  </div>
+                  <div class="avatar-body">
+                    <div class="hoodie"></div>
+                    <div class="laptop" id="avatarAlias">Tkun</div>
+                  </div>
+                </div>
+                <div class="avatar-shadow"></div>
+                <div class="character-controls">
+                  <label>
+                    <span>Rotate</span>
+                    <input id="avatarSpinRange" type="range" min="-3.14" max="3.14" step="0.01" value="-0.4" />
+                  </label>
+                  <label>
+                    <span>Intensity</span>
+                    <input id="intensityRange" type="range" min="1" max="10" step="1" value="4" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="left-identity-card font-card" data-card-id="identity">
+                <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="identity" /><output>2</output></div>
+                <div class="identity-head">
+                  <div>
+                    <p class="eyebrow" data-title-key="digitalTwinEyebrow" data-editable-title>Digital Twin</p>
+                    <h2 id="homeName">Tkun</h2>
+                  </div>
+                </div>
+                <div class="identity-grid">
+                  <section>
+                    <h3 data-title-key="basicInfoTitle" data-editable-title>基本信息</h3>
+                    <div class="inline-crud-row" id="basicInfoList"></div>
+                  </section>
+                  <section>
+                    <h3 data-title-key="identityEducationTitle" data-editable-title>教育经历</h3>
+                    <div class="identity-edu-list" id="identityEducationList"></div>
+                    <button class="add-list-item inline-add-list" data-add-list="identityEducation" type="button">+ 新增教育</button>
+                  </section>
+                </div>
+                <div class="identity-tags" id="identityTagList"></div>
+                <div class="identity-tag-add">
+                  <button class="add-chip" id="addIdentityTagButton" type="button">+</button>
+                </div>
+              </div>
+
+              <div class="hero-action-grid">
+                <button class="primary-button" data-jump="generator" type="button"><span class="icon">▣</span>生成定制简历</button>
+                <button class="secondary-button" data-jump="master" type="button"><span class="icon">◆</span>维护资料库</button>
+              </div>
+
+              <div class="left-dashboard">
+                <article class="radar-card font-card" data-card-id="radar">
+                  <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="radar" /><output>2</output></div>
+                  <div class="mini-card-title">
+                    <span class="glass-icon">⌁</span>
+                    <strong data-title-key="radarTitle" data-editable-title>能力雷达</strong>
+                  </div>
+                  <svg id="abilityRadar" viewBox="0 0 150 150" aria-label="能力雷达图">
+                    <polygon class="radar-grid" points="60,10 103,35 103,85 60,110 17,85 17,35" />
+                    <polygon class="radar-grid inner" points="60,31 85,46 85,74 60,89 35,74 35,46" />
+                    <g id="radarAxes"></g>
+                    <polygon class="radar-shape" id="radarShape" points="" />
+                    <g id="radarHandles"></g>
+                    <g id="radarLabels"></g>
+                  </svg>
+                  <div class="radar-editor" id="radarEditor" hidden>
+                    <label><span id="radarEditLabel">技术深度</span><input id="radarEditRange" type="range" min="0" max="100" value="80" /></label>
+                  </div>
+                </article>
+                <article class="badge-wall font-card" data-card-id="badges">
+                  <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="badges" /><output>2</output></div>
+                  <div class="mini-card-title">
+                    <span class="glass-icon">★</span>
+                    <strong data-title-key="badgesTitle" data-editable-title>徽章墙</strong>
+                  </div>
+                  <div class="badge-row" id="badgeWall"></div>
+                </article>
+              </div>
+
+              <article class="inspiration-card font-card" data-card-id="inspiration">
+                <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="inspiration" /><output>2</output></div>
+                <span class="glass-icon">☼</span>
+                <div>
+                  <strong data-title-key="inspirationTitle" data-editable-title>最近灵感</strong>
+                  <p id="inspirationText" data-editable="plain" data-edit-key="inspirationText">正在折腾：Three.js 角色面板、粒子交互和简历数据结构。</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="avatar-caption data-stream">
+              <p class="eyebrow" id="orbitStreamEyebrow" data-title-key="skillLoadoutEyebrow" data-editable-title>Skill Loadout</p>
+              <h2 id="streamTitle" data-title-key="streamTitle" data-editable-title>技能槽 · 当前主线能力</h2>
+              <p id="streamIntro" data-editable="plain" data-edit-key="orbitIntro">React、TypeScript、接口联调、性能优化和数据可视化是当前主线能力。</p>
+              <div class="data-stream-block font-card" data-card-id="skills">
+                <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="skills" /><output>2</output></div>
+                  <div class="stream-heading">
+                    <h3 data-title-key="skillsTitle" data-editable-title>已装备技能</h3>
+                  </div>
+                  <div class="skill-tags-panel" id="heroSkillTags"></div>
+                </div>
+              <div class="stream-bento">
+                <article class="project-card font-card" data-card-id="project">
+                  <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="project" /><output>2</output></div>
+                  <div class="stream-heading">
+                    <h3 data-title-key="projectTitle" data-editable-title>项目里程碑</h3>
+                  </div>
+                  <div class="project-spotlight-list" id="projectSpotlightList"></div>
+                  <button class="add-list-item" data-add-list="project" type="button">+ 新增项目</button>
+                </article>
+                <article class="focus-card font-card" data-card-id="focus">
+                  <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="focus" /><output>2</output></div>
+                  <div class="stream-heading">
+                    <h3 data-title-key="focusTitle" data-editable-title>最近关注</h3>
+                  </div>
+                  <div class="focus-tags-panel" id="focusTagsPanel"></div>
+                </article>
+              </div>
+              <div class="activity-panel font-card" data-card-id="activity">
+                <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="activity" /><output>2</output></div>
+                <h3 data-title-key="activityTitle" data-editable-title>成长日志</h3>
+                <ol id="activityList"></ol>
+                <button class="add-list-item" data-add-list="activity" type="button">+ 新增项</button>
+              </div>
+              <div class="personality-panel font-card" data-card-id="personality">
+                <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="personality" /><output>2</output></div>
+                <h3 data-title-key="personalityTitle" data-editable-title>性格底牌</h3>
+                <div id="personalityStats"></div>
+                <button class="add-list-item" data-add-personality type="button">+ 新增维度</button>
+                <p id="personalityText" data-editable="plain" data-edit-key="personalityText">底层性格：ISTP / 逻辑严密的实干家</p>
+              </div>
+              <article class="orbit-detail font-card" id="orbitDetail" data-card-id="orbitDetail">
+                <div class="font-tool"><button class="font-tool-button" type="button" aria-label="调节字号">A</button><input type="range" min="1" max="5" step="1" value="2" data-font-range="orbitDetail" /><output>2</output></div>
+                <span class="glass-icon">✺</span>
+                <div>
+                  <h3 data-title-key="orbitTitle" data-editable-title>技能槽</h3>
+                  <p data-editable="plain">React、TypeScript、接口联调、性能优化和数据可视化是当前主线能力。</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-generator">
+        <div class="page-header">
+          <div>
+            <p class="eyebrow">Tailored Generator</p>
+            <h2>简历工坊</h2>
+            <p>输入 JD 后，从 Master Data 中筛选经历、切换简历模板，并生成可编辑的投递版本。</p>
+          </div>
+          <button class="primary-button" id="printResumeButton" type="button"><span class="icon">⤓</span>导出 PDF</button>
+        </div>
+
+        <div class="generator-grid">
+          <section class="panel">
+            <div class="panel-header">
+              <h3><span class="icon">▣</span>JD 与生成参数</h3>
+            </div>
+            <div class="panel-body">
+              <div class="form-row">
+                <label for="companyInput">公司</label>
+                <input id="companyInput" value="示例公司" />
+              </div>
+              <div class="form-row">
+                <label for="roleInput">岗位</label>
+                <input id="roleInput" value="前端实习生" />
+              </div>
+              <div class="form-row">
+                <label for="jdInput">岗位 JD</label>
+                <textarea id="jdInput">我们正在招聘前端实习生，要求熟悉 React、TypeScript，了解前端工程化、接口联调、性能优化，有良好的沟通协作能力，优先考虑有小程序或数据可视化项目经验的同学。</textarea>
+              </div>
+              <div class="form-row two-col">
+                <div>
+                  <label for="pageLimit">篇幅</label>
+                  <select id="pageLimit">
+                    <option value="1">一页优先</option>
+                    <option value="2">两页以内</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="templateSelect">简历模板</label>
+                  <select id="templateSelect">
+                    <option value="minimal">极简技术版</option>
+                    <option value="formal">传统正式版</option>
+                    <option value="modern">现代双栏版</option>
+                    <option value="photo">带照片版</option>
+                    <option value="ats">ATS 友好版</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="photoInput">简历照片</label>
+                <div class="photo-tools">
+                  <input id="photoInput" type="file" accept="image/*" hidden />
+                  <label class="photo-ready-switch" for="photoVisibleToggle">
+                    <input id="photoVisibleToggle" type="checkbox" />
+                    <span id="photoSwitchLabel">照片：未就绪</span>
+                  </label>
+                  <button class="text-button danger-button" id="clearPhotoButton" type="button">移除</button>
+                </div>
+              </div>
+              <div class="control-line">
+                <button class="primary-button" id="generateButton" type="button">生成定制版本</button>
+                <button class="secondary-button" id="saveVersionButton" type="button">保存版本</button>
+              </div>
+              <div class="status-line">
+                <span id="keywordStatus">关键词：待生成</span>
+                <span id="scoreStatus">匹配度：待生成</span>
+                <span id="coverageStatus">覆盖：待生成</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h3><span class="icon">◆</span>候选经历</h3>
+              <span id="candidateCount">0 条</span>
+            </div>
+            <div class="panel-body">
+              <div id="candidateList" class="candidate-list"></div>
+            </div>
+          </section>
+
+          <section class="panel resume-panel">
+            <div class="panel-header">
+              <h3><span class="icon">▤</span>简历预览</h3>
+              <span>可直接编辑</span>
+            </div>
+            <div class="panel-body print-area">
+              <article class="resume-sheet template-minimal" id="resumePreview" contenteditable="true"></article>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+      <section class="view" id="view-master">
+        <div class="page-header">
+          <div>
+            <p class="eyebrow">Universal Resume</p>
+            <h2>资料中心</h2>
+            <p>所有 AI 匹配、简历生成和个人主页展示，都从这份 Master Resume JSON 派生。</p>
+          </div>
+          <div class="button-row">
+            <button class="secondary-button" id="exportDataButton" type="button"><span class="icon">⤓</span>导出 JSON</button>
+            <label class="file-button" for="importDataInput"><span class="icon">⤒</span>导入 JSON</label>
+            <input id="importDataInput" type="file" accept="application/json" hidden />
+          </div>
+        </div>
+
+        <div class="master-grid">
+          <section class="panel import-panel">
+            <div class="panel-header">
+              <h3><span class="icon">⤒</span>通用简历一键导入</h3>
+            </div>
+            <div class="panel-body">
+              <p class="import-copy">上传 PDF 简历后，系统会解析文本并映射到 Profile、Education、Skills、Experience Blocks。当前版本先做流程原型和模拟解析，真实解析将在 AI / PDF 解析接入阶段完成。</p>
+              <div class="import-drop">
+                <span class="glass-icon">▧</span>
+                <strong>导入通用 PDF 简历</strong>
+                <small>支持 PDF，后续扩展 Word / Markdown</small>
+                <label class="file-button" for="pdfResumeInput">选择 PDF</label>
+                <input id="pdfResumeInput" type="file" accept="application/pdf" hidden />
+              </div>
+              <div id="importStatus" class="import-status">等待导入</div>
+              <div id="importPreview" class="import-preview"></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h3><span class="icon">◎</span>数据摘要</h3>
+            </div>
+            <div class="panel-body">
+              <div id="dataSummary" class="summary-grid"></div>
+              <div class="button-row">
+                <button class="primary-button" id="saveDataButton" type="button">保存资料库</button>
+                <button class="secondary-button" id="resetDataButton" type="button">恢复示例</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel json-panel">
+            <div class="panel-header">
+              <h3><span class="icon">⌘</span>Master Resume JSON</h3>
+              <span id="jsonStatus">已加载</span>
+            </div>
+            <div class="panel-body">
+              <textarea id="masterJsonEditor" spellcheck="false"></textarea>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-ai">
+        <div class="page-header">
+          <div>
+            <p class="eyebrow">AI Connector</p>
+            <h2>AI 实验室</h2>
+            <p>管理多个 API Provider，并为 JD 解析、简历润色、ATS 检查等任务配置默认模型。</p>
+          </div>
+        </div>
+        <div class="ai-grid">
+          <section class="panel">
+            <div class="panel-header">
+              <h3><span class="icon">✦</span>Provider 管理</h3>
+              <button class="text-button" id="addProviderButton" type="button">新增</button>
+            </div>
+            <div class="panel-body">
+              <div class="provider-form">
+                <div class="form-row two-col">
+                  <div>
+                    <label for="providerName">服务商</label>
+                    <input id="providerName" value="DeepSeek" />
+                  </div>
+                  <div>
+                    <label for="providerModel">模型</label>
+                    <input id="providerModel" value="deepseek-chat" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <label for="providerEndpoint">Endpoint</label>
+                  <input id="providerEndpoint" value="https://api.deepseek.com" />
+                </div>
+                <div class="form-row">
+                  <label for="providerKey">API Key</label>
+                  <input id="providerKey" type="password" placeholder="仅本地保存，后续支持加密" />
+                </div>
+                <button class="primary-button" id="saveProviderButton" type="button">保存 Provider</button>
+              </div>
+              <div id="providerList" class="provider-list"></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h3><span class="icon">◇</span>任务路由</h3>
+            </div>
+            <div class="panel-body route-grid">
+              <label>JD 关键词提取<select id="routeJd"></select></label>
+              <label>经历匹配<select id="routeMatch"></select></label>
+              <label>简历润色<select id="routePolish"></select></label>
+              <label>ATS 检查<select id="routeAts"></select></label>
+              <label>数字分身问答<select id="routeTwin"></select></label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h3><span class="icon">▣</span>安全约束</h3>
+            </div>
+            <div class="panel-body">
+              <div class="slider-row">
+                <label for="hallucinationGuard">防编造强度</label>
+                <input id="hallucinationGuard" type="range" min="1" max="5" value="5" />
+                <strong id="guardValue">5</strong>
+              </div>
+              <p class="import-copy">AI 只能基于 Master Data 已有事实进行筛选、排序和表达优化，不能新增未经记录的经历。</p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-settings">
+        <div class="page-header">
+          <div>
+            <p class="eyebrow">Settings</p>
+            <h2>全局设置</h2>
+            <p>管理主题、隐私、PDF 导出和个人化偏好。</p>
+          </div>
+        </div>
+        <div class="settings-grid">
+          <article class="feature-card wide">
+            <div class="card-title"><span class="card-icon">✺</span><h3>主题皮肤</h3></div>
+            <div class="theme-options" id="themeOptions">
+              <button data-theme-choice="system" type="button">跟随系统</button>
+              <button data-theme-choice="day" type="button">白天</button>
+              <button data-theme-choice="night" type="button">晚上</button>
+              <button data-theme-choice="dopamine" type="button">默认多巴胺</button>
+              <button data-theme-choice="mint" type="button">薄荷汽水</button>
+              <button data-theme-choice="berry" type="button">莓果霓虹</button>
+              <button data-theme-choice="orange" type="button">阳光橘子</button>
+              <button data-theme-choice="arcade" type="button">电玩紫绿</button>
+            </div>
+          </article>
+          <article class="feature-card">
+            <div class="card-title"><span class="card-icon">◉</span><h3>隐私模式</h3></div>
+            <p>公网主页可隐藏电话、邮箱等敏感信息，PDF 导出时再恢复完整内容。</p>
+          </article>
+          <article class="feature-card">
+            <div class="card-title"><span class="card-icon">⤓</span><h3>PDF 策略</h3></div>
+            <p>当前使用 CSS Print；后续可升级为 Playwright / Puppeteer 服务端导出。</p>
+          </article>
+          <article class="feature-card">
+            <div class="card-title"><span class="card-icon">★</span><h3>主页方向</h3></div>
+            <p>主页偏角色卡和生活化展示，简历 PDF 保持正式、清晰、ATS 友好。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="font-popover" id="fontPopover" hidden>
+    <button class="font-tool-button" type="button" aria-label="字号">A</button>
+    <input id="fontPopoverRange" type="range" min="1" max="5" step="1" value="2" />
+    <output id="fontPopoverOutput">2</output>
+  </div>
+
+  <div class="modal-backdrop" id="accountModal" hidden>
+    <section class="account-modal" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Account</p>
+          <h2 id="accountModalTitle">账户中心</h2>
+        </div>
+        <button class="text-button" id="closeAccountModal" type="button">关闭</button>
+      </div>
+
+      <div class="account-profile">
+        <label class="account-avatar large" for="accountAvatarInput" id="modalAccountAvatar">TK</label>
+        <input id="accountAvatarInput" type="file" accept="image/*" hidden />
+        <div>
+          <strong id="modalAccountName">未登录用户</strong>
+          <p>头像和账户信息当前保存在浏览器本地。真实注册登录需要后端认证服务。</p>
+        </div>
+      </div>
+
+      <div class="account-tabs">
+        <button class="active" data-account-tab="login" type="button">登录</button>
+        <button data-account-tab="register" type="button">注册</button>
+        <button data-account-tab="reset" type="button">找回密码</button>
+      </div>
+
+      <div class="account-grid">
+        <div class="form-row">
+          <label for="accountEmail">邮件账号</label>
+          <input id="accountEmail" type="email" placeholder="name@example.com" />
+        </div>
+        <div class="form-row">
+          <label for="accountPassword">密码</label>
+          <input id="accountPassword" type="password" placeholder="至少 8 位" />
+        </div>
+        <div class="form-row account-code-row">
+          <label for="accountCode">验证码</label>
+          <div class="inline-control">
+            <input id="accountCode" placeholder="输入验证码" />
+            <button class="secondary-button" id="sendCodeButton" type="button">发送验证码</button>
+          </div>
+        </div>
+        <div class="button-row">
+          <button class="primary-button" id="loginButton" type="button">登录</button>
+          <button class="secondary-button" id="registerButton" type="button">注册</button>
+          <button class="text-button" id="forgotPasswordButton" type="button">忘记密码</button>
+          <button class="text-button" id="logoutButton" type="button">退出 / 游客状态</button>
+        </div>
+        <div class="import-status" id="accountStatus">静态版本只能模拟流程；上线后需要后端、数据库和邮件验证码服务。</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./source/app.js"></script>
+</body>
+</html>
